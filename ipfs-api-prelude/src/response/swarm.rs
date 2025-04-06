@@ -55,10 +55,11 @@ pub struct SwarmPeerStream {
 pub struct SwarmPeer {
     pub addr: String,
     pub peer: String,
-    pub latency: String,
-    pub muxer: String,
+    pub latency: Option<String>,
+    pub muxer: Option<String>,
 
     #[serde(deserialize_with = "serde::deserialize_vec")]
+    #[serde(default = "Vec::new")]
     pub streams: Vec<SwarmPeerStream>,
 }
 
